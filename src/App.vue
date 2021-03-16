@@ -1,14 +1,15 @@
 <template>
-  <jiujiu/>
+ <div>导航栏|<router-link to="/">Jiu</router-link>
+ |<router-link to="/xxx">Jiu2</router-link>
+ </div>
+ <router-view/>
 </template>
 
 <script>
-import jiujiu from './components/jiujiu.vue'
+
 
 export default {
   name: 'App',
-  components: {
-    jiujiu
-  }
+ 
 }
 </script>
