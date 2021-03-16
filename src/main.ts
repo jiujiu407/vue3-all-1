@@ -1,16 +1,16 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import './index.css'
+import './index.scss'
 import {createWebHashHistory,createRouter} from 'vue-router'
-import Jiu from './components/Jiu.vue'
-import Jiu2 from './components/Jiu2.vue'
+import Home from './views/Home.vue'
+import Doc from './views/Doc.vue'
 const history = createWebHashHistory()
 const router = createRouter({
     history:history,
     routes:[
         // 当用户访问根路径，我们就渲染Jiu
-        {path:'/',component:Jiu},
-        {path:'/xxx',component:Jiu2}
+        {path:'/',component:Home},
+        {path:'/doc',component:Doc}
     ]
 })
 const app = createApp(App)
