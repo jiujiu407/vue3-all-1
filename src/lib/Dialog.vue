@@ -1,20 +1,24 @@
 <template>
 <template v-if="visible">
-    <div class="gulu-dialog-overlay"></div>
+    <!-- 把这些div传送到body下面 -->
+    <Teleport to="body">
+           <div class="gulu-dialog-overlay" @click="onClickOverlay"></div>
  <div class="gulu-dialog-wrapper">
      <!-- gulu-dialog在白色对话框外面包一层透明div -->
   <div class="gulu-dialog">
-    <header>标题 <span class="gulu-dialog-close"></span></header>
+    <header>
+       <slot name="title" />
+        <span @click="close" class="gulu-dialog-close"></span></header>
     <main>
-      <p>第一行字</p>
-      <p>第二行字</p>
+     <slot name="content" />
     </main>
     <footer>
-      <Button level="main">OK</Button>
-      <Button>Cancel</Button>
+      <Button level="main" @click="ok">OK</Button>
+      <Button @click="cancel">Cancel</Button>
     </footer>
   </div>
     </div>
+    </Teleport>
     </template>
 </template>
 <script lang="ts">
@@ -24,9 +28,51 @@ export default {
      visible:{
          type:Boolean,
          default:false
+     },
+     closeOnClickOverlay: {
+         type: Boolean,
+         default:true
+     },
+     ok:{
+         type:Function
+     },
+     cancel:{
+         type:Function
      }
     },
-    components:{Button}
+    components:{Button},
+    setup(props,context){
+        const close = ()=>{
+          context.emit('update:visible',false)
+        }
+        const onClickOverlay = () =>{
+            if(props.closeOnClickOverlay){
+                close()
+            }
+        }
+        const ok =()=>{
+           if(props.ok?.()!== false){
+               close()
+           }
+        }
+        const cancel = ()=>{
+            props.cancel?.()
+            close()
+        }
+           const showDialog = ()=>{
+               openDialog(
+                {title:'标题',
+                content:'你好'}
+               )
+        }
+        return{
+            close,
+            onClickOverlay,
+            ok,
+            cancel,
+            showDialog
+        }
+    }
 }
 </script>
 <style lang="scss">
