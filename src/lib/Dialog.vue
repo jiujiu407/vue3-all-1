@@ -51,26 +51,19 @@ export default {
             }
         }
         const ok =()=>{
-           if(props.ok?.()!== false){
+           if(props.ok && props.ok()!== false){
                close()
            }
         }
         const cancel = ()=>{
-            props.cancel?.()
+            props.cancel&&props.cancel()
             close()
-        }
-           const showDialog = ()=>{
-               openDialog(
-                {title:'标题',
-                content:'你好'}
-               )
         }
         return{
             close,
             onClickOverlay,
             ok,
-            cancel,
-            showDialog
+            cancel
         }
     }
 }

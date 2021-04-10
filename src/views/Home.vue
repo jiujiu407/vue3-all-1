@@ -3,10 +3,10 @@
     <div class="topnavAndBanner">
        <Topnav />
        <div class="banner">
-           <h1>轱辘UI</h1>
-           <h2>一个厉害的UI框架</h2>
+           <h1>Fly-UI</h1>
+           <h2>一个带你飞的UI框架</h2>
            <p class="actions">
-               <a href="">GitHub</a>
+               <a href="https://github.com/jiujiu407">GitHub</a>
                <router-link to="/doc">开始</router-link>
            </p>
        </div>
@@ -47,13 +47,13 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-$green:#02bcb0;
+$green:#a22468;
 $border-radius:4px;
-$color:#007974;
+$color:#af7d98;
 .topnavAndBanner{
   background: linear-gradient(145deg,
-   rgba(227,255,253,1) 0%,
-    rgba(183,233,230,1) 100%);
+   rgb(234, 215, 226) 0%,
+    rgb(172, 151, 163) 100%);
     clip-path: ellipse(80% 60% at 50% 40%);
 }
 .features {

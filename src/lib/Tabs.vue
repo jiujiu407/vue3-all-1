@@ -40,6 +40,7 @@ export default {
            indicator.value.style.left = left + 'px'}
         // watchEffect(x)代替onMounted(x)和onUpdated(x)
         onMounted(()=>{watchEffect(()=>{ 
+          console.log('watch effect 执行了')
            const {width} =selectedItem.value.getBoundingClientRect()
            indicator.value.style.width = width + 'px'
            const {left:left1} =container.value.getBoundingClientRect()
